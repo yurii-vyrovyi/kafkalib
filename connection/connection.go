@@ -10,11 +10,11 @@ import (
 )
 
 type Logger interface {
-	Debug(string)
+	Debug(...interface{})
 	Debugf(string, ...interface{})
-	Info(string)
+	Info(...interface{})
 	Infof(string, ...interface{})
-	Error(string)
+	Error(...interface{})
 	Errorf(string, ...interface{})
 }
 

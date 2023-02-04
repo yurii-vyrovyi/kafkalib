@@ -16,11 +16,11 @@ import (
 
 //go:generate mockgen -source=./schema-registry.go -destination=mocks-schema-registry.go -package=schemaregistry
 type Logger interface {
-	Debug(string)
+	Debug(...interface{})
 	Debugf(string, ...interface{})
-	Info(string)
+	Info(...interface{})
 	Infof(string, ...interface{})
-	Error(string)
+	Error(...interface{})
 	Errorf(string, ...interface{})
 }
 
