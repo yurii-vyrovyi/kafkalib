@@ -9,7 +9,7 @@ import (
 	"net/http"
 	"time"
 
-	"gitlab.test.igdcs.com/finops/nextgen/sandbox/kafka-poc/kafkalib/connection"
+	"github.com/yurii-vyrovyi/kafkalib/connection"
 
 	gojson "github.com/goccy/go-json"
 )

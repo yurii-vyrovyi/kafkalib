@@ -9,7 +9,7 @@ import (
 	"sync"
 	"time"
 
-	"gitlab.test.igdcs.com/finops/nextgen/sandbox/kafka-poc/kafkalib/schemaregistry"
+	"github.com/yurii-vyrovyi/kafkalib/schemaregistry"
 
 	confluentkafka "github.com/confluentinc/confluent-kafka-go/kafka"
 	gojson "github.com/goccy/go-json"

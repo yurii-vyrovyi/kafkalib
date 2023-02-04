@@ -1,4 +1,4 @@
-module gitlab.test.igdcs.com/finops/nextgen/sandbox/kafka-poc/kafkalib
+module github.com/yurii-vyrovyi/kafkalib
 
 go 1.19
 

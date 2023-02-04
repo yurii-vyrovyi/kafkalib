@@ -8,8 +8,8 @@ import (
 	"syscall"
 	"time"
 
-	"gitlab.test.igdcs.com/finops/nextgen/sandbox/kafka-poc/kafkalib"
-	"gitlab.test.igdcs.com/finops/nextgen/sandbox/kafka-poc/kafkalib/dummylogger"
+	"github.com/yurii-vyrovyi/kafkalib"
+	"github.com/yurii-vyrovyi/kafkalib/dummylogger"
 
 	logger "github.com/sirupsen/logrus"
 )

@@ -9,7 +9,6 @@ unit_test:
 
 .PHONY: lint
 lint:
-	curl https://gitlab.test.igdcs.com/finops/devops/cicd/runner/-/raw/master/.golangci.yml -o ./.golangci.yml
 	golangci-lint run -v --config=./.golangci.yml
 
 
