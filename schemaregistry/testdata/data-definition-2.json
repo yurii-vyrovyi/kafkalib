@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "http://example.com/models/data-item-definition.json",
+  "title": "data item",
+  "description": "test data item 2",
+  "type": "object",
+
+  "properties": {
+    "description": {
+      "type": "string"
+    },
+
+    "id": {
+      "type": "integer"
+    },
+
+    "value": {
+      "type": "number"
+    }
+
+  },
+
+  "required": [ "id", "value" ]
+}
