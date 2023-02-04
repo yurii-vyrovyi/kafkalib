@@ -182,51 +182,11 @@ func (c *Consumer) Close() error {
 // CheckConnection checks connection with a brokers.
 // It makes several attempts until ping will be successful or a timeout will be reached.
 func (c *Consumer) CheckConnection(ctx context.Context) error {
-	now := time.Now()
-
-	idxAttempt := 0
-
-	for {
-		// In case ctx.Done comes first and ping returns AFTER that,
-		// sending error to channel will freeze because following select will quit on ctx.Done.
-		// Buffered channel with capacity=2 unblocks `chanErr <- err` and a routine can end up.
-		chanErr := make(chan error, 2)
-
-		// running ping in parallel to terminate on ctx.Done
-		go func() {
-			defer close(chanErr)
-
-			err := c.Ping()
-			if err == nil {
-				return
-			}
-
-			chanErr <- err
-		}()
-
-		// waiting for ping results or ctx.Done
-		select {
-		case <-ctx.Done():
-			return errors.New("ctx.Done")
-
-		case err, ok := <-chanErr:
-			if !ok || err == nil {
-				return nil
-			}
-
-			c.logger.Infof("check connection [attempt: #%d] failed: %v", idxAttempt, err)
-		}
-
-		// Some error happened. We'll try more a bit later
-		time.Sleep(checkConnectionSleepPeriod)
-
-		// Maybe that's enough?
-		if time.Since(now) >= c.config.CheckConnectionTimeout {
-			return errors.New("timeout")
-		}
-
-		idxAttempt++
+	if err := checkConnections(ctx, c.Ping, c.config.CheckConnectionTimeout, c.logger); err != nil {
+		return fmt.Errorf("consumer falied to connect: %w", err)
 	}
+
+	return nil
 }
 
 // Ping checks connection with a broker

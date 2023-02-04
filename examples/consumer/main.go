@@ -52,10 +52,7 @@ func run(ctx context.Context) error {
 
 func handler(_ context.Context, msg *kafkalib.Message) error {
 
-	// fmt.Printf("[t: %s] [o: %d] [k: %s]: %s\n", msg.Topic, msg.Offset, string(msg.Key), string(msg.Value))
-	// fmt.Printf("[t: %s] [o: %d]\n", msg.Topic, msg.Offset)
-
-	fmt.Println(".")
+	fmt.Printf("[t: %s] [o: %d] [k: %s]: %s\n", msg.Topic, msg.Offset, string(msg.Key), string(msg.Value))
 
 	return nil
 }
